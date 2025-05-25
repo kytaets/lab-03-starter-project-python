@@ -1,5 +1,5 @@
 # Alpine Dockerfile (версія 3 - менший розмір)
-FROM python:3.10
+FROM python:3.10-alpine
 
 WORKDIR /app
 
