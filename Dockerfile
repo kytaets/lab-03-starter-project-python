@@ -1,16 +1,16 @@
-# Оптимізований Dockerfile (версія 2 - з кешуванням шарів)
-FROM python:3.10
+# Alpine Dockerfile (версія 3 - менший розмір)
+FROM python:3.10-alpine
 
 WORKDIR /app
 
-# Спочатку копіюємо тільки файли залежностей
+# Копіюємо файли залежностей
 COPY requirements.txt .
 COPY requirements/ ./requirements/
 
-# Встановлюємо залежності (цей шар буде кешуватися)
+# Встановлюємо залежності
 RUN pip install -r requirements.txt
 
-# Тепер копіюємо код застосунку (змінюється частіше)
+# Копіюємо код застосунку
 COPY spaceship/ ./spaceship/
 COPY build/ ./build/
 
